@@ -2,20 +2,23 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Button } from './componets/ui/Buttons'
-import { PlusIcon } from './icons/PlusIcon'
-import { ShareIcon } from './icons/ShareIcon'
+import {Dashboard} from "./pages/Dashboard.tsx"
+import { Signup } from './pages/Signup.tsx'
+import { Signin } from './pages/Signin.tsx'
+import {BrowserRouter,Routes,Route} from "react-router-dom"
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <Button variant='primary' text='Add Content' size='md'startIcon={<PlusIcon size='md' />}  onClick={() => setCount((count) => count + 1)} />
-      <Button variant='secondary' text='Share' size='md' startIcon={<ShareIcon size='md' />} onClick={() => setCount((count) => count + 1)} />
-      <Button variant='primary' text='Share' size='sm' startIcon={<ShareIcon size='sm' />} endIcon={<PlusIcon size='sm' />} onClick={() => setCount((count) => count + 1)} />
-    
-    </>
-  )
+
+  return <BrowserRouter>
+  <Routes>
+  <Route path='/signup' element={<Signup></Signup>}></Route>
+  <Route path='/signin' element={<Signin></Signin>}></Route>
+  <Route path='/dashboard' element={<Dashboard shared={false} ></Dashboard>}></Route>
+  <Route path="/brain/:id" element={<Dashboard shared={true}></Dashboard>}></Route>
+  </Routes>
+  
+  </BrowserRouter>
+  
 }
 
 export default App
