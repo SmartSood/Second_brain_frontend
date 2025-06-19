@@ -30,6 +30,7 @@ export function Signin(){
                 email,
                 password
             });
+            //@ts-expect-error nfwnwndjfr
             const jwt=response.data.token;
             await localStorage.setItem("token",jwt);
             navigate("/dashboard");

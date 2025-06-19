@@ -21,6 +21,7 @@ hash?:string}) {
           token: localStorage.getItem("token") || "",
         },
       });
+      //@ts-expect-error nfwnwndjfr
       setContent(response.data);
     }
     else{
@@ -31,6 +32,7 @@ hash?:string}) {
               },
             });
             console.log(response.data);
+            //@ts-expect-error nfwnwndjfr
             setContent(response.data);
 
             

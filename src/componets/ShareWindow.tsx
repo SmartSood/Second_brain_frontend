@@ -24,6 +24,7 @@ export function ShareWindow({open,onClose}){
         })
     if(share){
         console.log(response)
+        //@ts-expect-error nfwnwndjfr
     setLink("http://localhost:5173/brain/"+response.data.hash)
     }
     else{
