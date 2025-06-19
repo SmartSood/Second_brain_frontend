@@ -76,6 +76,7 @@ export function ShareWindow({open,onClose}){
         <Button onClick={()=>{
             shareWindow(false);
         }} variant="secondary" text="Remove Link"></Button>
+
         </div>
         
         </span>
