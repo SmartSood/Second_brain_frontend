@@ -4,7 +4,7 @@ import { Button } from "./ui/Buttons";
 //controlled component
 import { CrossIcon } from "../icons/CrossIcon";
 import { Input } from "./ui/Input";
-import { Ref, useRef } from "react";
+import {  useRef } from "react";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
 enum ContentType{
@@ -13,8 +13,8 @@ enum ContentType{
     Note="note"
 }
 export function CreateContentModal({open,onClose}){
-    const titleRef=useRef<any>();
-    const linkRef=useRef<any>();
+    const titleRef=useRef<any>(null);
+    const linkRef=useRef<any>(null);
     const [type,setType]=useState(ContentType.Youtube);
     async function addContent(){
         const title=titleRef.current?.value;
@@ -61,18 +61,18 @@ export function CreateContentModal({open,onClose}){
 
         </div>
         <div className="flex gap-1 p-4">
-            <Button text="Youtube" variant={type===ContentType.Youtube?"primary":"secondary"} onClick={()=>{
+            <Button fullWidth={false} loading={false} text="Youtube" variant={type===ContentType.Youtube?"primary":"secondary"} onClick={()=>{
                 setType(ContentType.Youtube);
             }}></Button>
-            <Button text="Twitter" variant={type===ContentType.Twitter?"primary":"secondary"} onClick={()=>{
+            <Button fullWidth={false} loading={false} text="Twitter" variant={type===ContentType.Twitter?"primary":"secondary"} onClick={()=>{
                 setType(ContentType.Twitter);
             }}></Button>
-               <Button text="Note" variant={type===ContentType.Note?"primary":"secondary"} onClick={()=>{
+               <Button fullWidth={false} loading={false} text="Note" variant={type===ContentType.Note?"primary":"secondary"} onClick={()=>{
                 setType(ContentType.Note);
             }}></Button>
         </div>
         <div className="flex justify-center">
-        <Button onClick={addContent} variant="primary" text="Submit"></Button>
+        <Button fullWidth={false} loading={false} onClick={addContent} variant="primary" text="Submit"></Button>
         </div>
         
         </span>

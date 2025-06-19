@@ -12,7 +12,7 @@ import axios from 'axios'
 import { BACKEND_URL } from '../config'
 import { ShareWindow } from '../componets/ShareWindow'
 import { useParams } from 'react-router-dom'
-export function Dashboard({shared}:{shared:Boolean}) {
+export function Dashboard({shared}:{shared:boolean}) {
  const [modalopen,setModalOpen]=useState(false);
  const [shareopen,setShareopen]=useState(false);
 
@@ -34,10 +34,10 @@ const {content,refresh}=useContent({shared,hash});
      {!shared &&<div className='flex justify-end gap-4'>
       <Button variant='primary' onClick={()=>setModalOpen(true)} text='Add Content' startIcon={
 <PlusIcon size='md'></PlusIcon>
-      }></Button>
+      } fullWidth={false} loading={false}></Button>
       <Button variant='secondary' text='Share Brain' onClick={()=>{
         setShareopen(true);
-      }} startIcon={<ShareIcon size='md'></ShareIcon>}></Button>
+      }} startIcon={<ShareIcon size='md'></ShareIcon>} fullWidth={false} loading={false}></Button>
       </div>}
       
       <div className='pt-4 pl-4 grid grid-cols-9 gap-4'>

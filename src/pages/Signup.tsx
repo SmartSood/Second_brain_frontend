@@ -1,15 +1,15 @@
 import { Button } from "../componets/ui/Buttons"
 import { Input } from "../componets/ui/Input"
-import { Ref, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { BrainIcon } from "../icons/BrainLogo";
 
 export function Signup(){
-    const usernameRef=useRef<HTMLInputElement>();
-    const passwordRef=useRef<HTMLInputElement>();
-    const EmailRef=useRef<HTMLInputElement>();
+    const usernameRef=useRef<HTMLInputElement>(null);
+    const passwordRef=useRef<HTMLInputElement>(null);
+    const EmailRef=useRef<HTMLInputElement>(null);
     const navigate=useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");

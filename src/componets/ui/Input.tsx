@@ -1,4 +1,3 @@
-import { Ref } from "react"
 export function Input({onChange,placeholder,reference,edit=true,value,type="text"}:{onChange?:()=>void,
     placeholder?:string,reference?:any,
     edit?:boolean,

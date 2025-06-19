@@ -1,18 +1,17 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "./ui/Buttons";
 //controlled component
 import { CrossIcon } from "../icons/CrossIcon";
 import { Input } from "./ui/Input";
-import { Ref, useRef } from "react";
+import { useRef } from "react";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { CopyIcon } from "../icons/CopyIcon";
 export function ShareWindow({open,onClose}){
     const [link,setLink]=useState("");
-    const linkRef=useRef<any>();
+    const linkRef=useRef<any>(null);
     async function shareWindow(share){
-        const link=linkRef.current?.value;
         console.log(share)
        const response= await axios.post(BACKEND_URL+"/api/v1/brain/share",{
          share:share
@@ -50,6 +49,7 @@ export function ShareWindow({open,onClose}){
         </div>
         <div className="w-full flex items-center " >
             <div>  
+                {/* @ts-expect-error nfwnwndjfr */}
                 <Input reference={linkRef}  value={link} edit={false}> </Input></div>
           <div>
           {link && (
@@ -68,12 +68,12 @@ export function ShareWindow({open,onClose}){
         </div>
         <div className="flex justify-center">
             <div className="pr-4">
-            <Button onClick={()=>{
+            <Button fullWidth={false} loading={false} onClick={()=>{
             shareWindow(true);
         }} variant="primary" text="Generate Link"></Button>
             </div>
  
-        <Button onClick={()=>{
+        <Button fullWidth={false} loading={false} onClick={()=>{
             shareWindow(false);
         }} variant="secondary" text="Remove Link"></Button>
 

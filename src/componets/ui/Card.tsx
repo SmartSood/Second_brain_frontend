@@ -2,8 +2,10 @@
 import { ShareIcon } from '../../icons/ShareIcon'
 import { TwitterIcon } from '../../icons/TwitterIcon'
 import { YoutubeIcon } from '../../icons/YoutubeIcon'
-import { NoteIcon,} from '../../icons/note'
+import { NoteIcon} from '../../icons/Note'
 import { TrashIcon } from '../../icons/TrashIcon'
+import ReactPlayer from 'react-player'
+import { useEffect } from 'react'
 interface CardProps{
     title:string,
     link:string,
@@ -12,6 +14,34 @@ interface CardProps{
     shared:Boolean
 
 }
+interface XPostEmbedProps {
+    url: string;
+  }
+  
+  const XPostEmbed = ({ url }: XPostEmbedProps) => {
+    useEffect(() => {
+      // Prevent loading script multiple times
+      if (!document.querySelector('script[src="https://platform.twitter.com/widgets.js"]')) {
+        const script = document.createElement('script');
+        script.src = 'https://platform.twitter.com/widgets.js';
+        script.async = true;
+        document.body.appendChild(script);
+      } else {
+        // Re-parse tweet block if script already loaded
+        // @ts-ignore
+        if (window.twttr && window.twttr.widgets) {
+          // @ts-ignore
+          window.twttr.widgets.load();
+        }
+      }
+    }, [url]);
+  
+    return (
+      <blockquote className="twitter-tweet">
+        <a href={url}></a>
+      </blockquote>
+    );
+  };
 export function Card({title,link,type,handleDelete,shared}:CardProps){
 
     console.log(type);
@@ -46,10 +76,8 @@ export function Card({title,link,type,handleDelete,shared}:CardProps){
         
         </div>
         <div className='pt-4   flex items-start justify-center'>
-            {type==='twitter'&& <div><blockquote className="twitter-tweet">
-  <a href={link.replace("x.com","twitter.com")}></a> 
-</blockquote></div> }
-       {type==='youtube'&& <iframe className="w-full rounded-md h-80 "src={link} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe> }
+            {type==='twitter'&& <XPostEmbed url={link.replace("x.com","twitter.com")} />}
+       {type==='youtube'&& <ReactPlayer url={link} width="100%" height="100%" controls={true} />}
        {type==='note'&& <div className='max-w-full break-words  overflow-x-auto'>{link}</div>}
         </div>
        

@@ -3,17 +3,17 @@ export interface IconProps {
 }
 
 export  const iconSizeVariants = {
-  "xs":"size-1",
-  "sm":"size-2",
-  "md":"size-4",
-  "lg":"size-6",
-  "xl":"size-8",
-  "2xl":"size-10",
-  "3xl":"size-12",
-  "4xl":"size-14",
-  "5xl":"size-16",
-  "6xl":"size-18",
-  "7xl":"size-20",
-  "8xl":"size-22",
-  "9xl":"size-24",
+  "xs":"w-3 h-3",
+  "sm":"w-4 h-4",
+  "md":"w-6 h-6",
+  "lg":"w-8 h-8",
+  "xl":"w-10 h-10",
+  "2xl":"w-12 h-12",
+  "3xl":"w-16 h-16",
+  "4xl":"w-20 h-20",
+  "5xl":"w-24 h-24",
+  "6xl":"w-28 h-28",
+  "7xl":"w-32 h-32",
+  "8xl":"w-36 h-36",
+  "9xl":"w-40 h-40"
 }
